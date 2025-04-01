@@ -1,0 +1,46 @@
+# Servidor MCP de Teste
+
+Este é um servidor MCP (Multimodal Conversational Processor) simples para testes de integração com n8n.
+
+## Requisitos
+
+- Node.js (v14 ou superior)
+- npm ou yarn
+
+## Instalação local
+
+1. Clone este repositório
+2. Instale as dependências:
+   ```
+   npm install
+   ```
+3. Inicie o servidor:
+   ```
+   npm start
+   ```
+
+## Implantação no EasyPanel
+
+1. Adicione este repositório ao EasyPanel
+2. Configure as seguintes variáveis de ambiente (opcional):
+   - `PORT`: Porta em que o servidor irá rodar (padrão: 3000)
+
+## Uso com n8n
+
+No node MCP do n8n, configure:
+
+1. Connect using: Command Line (STDIO)
+2. Command: `curl -X POST -H "Content-Type: application/json" -d "{\"query\":\"{{$json.query}}\"}" http://seu-ip-ou-dominio:3000/api/mcp`
+
+## Endpoints
+
+- `POST /api/mcp`: Endpoint principal para comunicação MCP
+- `GET /status`: Verifica se o servidor está online
+
+## Teste simples
+
+Use o seguinte comando para testar o servidor:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"query":"teste"}' http://localhost:3000/api/mcp
+```
